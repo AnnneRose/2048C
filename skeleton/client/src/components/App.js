@@ -15,7 +15,7 @@ import { get, post } from "../utilities";
  * Define the "App" component
  */
 const App = () => {
-  const [userId, setUserId] = useState(undefined);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
@@ -37,7 +37,7 @@ const App = () => {
   };
 
   const handleLogout = () => {
-    setUserId(undefined);
+    setUserId(null);
     post("/api/logout");
   };
 
