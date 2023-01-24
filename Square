@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import invariant from "tiny-invariant";
 import { useBoard } from "../Board";
+import "./square.less";
 type Props ={
     val: Number;
     pos:[Number,Number];
