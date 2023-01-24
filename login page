@@ -34,7 +34,7 @@ const UserPage = () => {
   return (
     <div>
       <GoogleLogin
-        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+        clientId={process.env.439284619534-8dgp40a4po4afq4fp9id9b5862c5h0q9.apps.googleusercontent.com}
         onSuccess={handleGoogleLoginSuccess}
         onFailure={handleGoogleLoginFailure}
       />
@@ -46,7 +46,7 @@ const UserPage = () => {
           <p>{user.bio}</p>
         </div>
       ) : (
-        <p>Please log in to view your user page.</p>
+        <p>Log in to view your page.</p>
       )}
     </div>
   );
