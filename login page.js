@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import GoogleLogin from 'react-google-login';
 
+const CLIENT_ID = "439284619534-8dgp40a4po4afq4fp9id9b5862c5h0q9.apps.googleusercontent.com";
+
 const UserPage = () => {
   const [user, setUser] = useState({});
 
