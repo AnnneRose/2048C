@@ -36,7 +36,7 @@ const UserPage = () => {
   return (
     <div>
       <GoogleLogin
-        clientId={process.env.439284619534-8dgp40a4po4afq4fp9id9b5862c5h0q9.apps.googleusercontent.com}
+        clientId={CLIENT_ID}
         onSuccess={handleGoogleLoginSuccess}
         onFailure={handleGoogleLoginFailure}
       />
