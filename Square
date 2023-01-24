@@ -1,0 +1,54 @@
+import React, { useEffect, useState } from "react";
+import invariant from "tiny-invariant";
+import { useBoard } from "../Board";
+type Props ={
+    val: Number;
+    pos:[Number,Number];
+    ord:Number;
+}
+
+const Square =({val, pos, ord}:Props)=>{
+    const [containerWidth, sqCount] = useBoard();
+    const [scale, setScale] = useState(1);
+    const previousVal = usePrevProps<Number>(val);
+    // check if tile is within the board boundries
+  const withinBoardBoundaries =
+  pos[0] < sqCount && pos[1] < sqCount;
+    invariant(withinBoardBoundaries, "Tile out of bound");
+
+    // if it is a new tile...
+    const isNew = previousValue === undefined;
+    // ...or its value has changed...
+    const hasChanged = previousValue !== val;
+    // ... then the tile should be highlighted.
+    const shallHighlight = isNew || hasChanged;
+
+    // useEffect will decide if highlight should be triggered.
+    useEffect(() => {
+    if (shallHighlight) {
+        setScale(1.1);
+        setTimeout(() => setScale(1), 100);
+    }
+    }, [shallHighlight, scale]);
+
+    /**
+     * Converts tile position from array index to pixels.
+     */
+    const positionToPixels = (pos: number) => {
+    return (position / sqCount) * (containerWidth as number);
+    };
+
+    // all animations come from CSS transition, and we pass them as styles
+    const style = {
+    top: positionToPixels(pos[1]),
+    left: positionToPixels(pos[0]),
+    transform: `scale(${scale})`,
+    ord,
+    };
+
+    return (
+    <div className={`tile tile-${val}`} style={style}>
+        {val}
+    </div>
+    );
+};

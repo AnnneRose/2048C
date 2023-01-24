@@ -1,0 +1,19 @@
+import React from "react";
+import { useBoard } from "../Board";
+
+export const Grid = () => {
+  const [, sqCount] = useBoard();
+
+  const renderGrid = () => {
+    const len = sqCount * sqCount;
+    const cells = [] as JSX.Element[];
+
+    for (let index = 0; index < len; index ++) {
+      cells.push(<div key={`${index}`} className={`grid-cell`} />);
+    }
+
+    return cells;
+  };
+
+  return <div className="grid">{renderGrid()}</div>;
+};
